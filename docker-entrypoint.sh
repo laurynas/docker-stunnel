@@ -10,6 +10,7 @@ client  = yes
 [stunnel-client]
 accept = ${ACCEPT}
 connect = ${CONNECT}
+delay = yes
 
 _EOF_
 
