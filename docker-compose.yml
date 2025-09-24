@@ -1,0 +1,23 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ACCEPT=8080
+      - CONNECT=server:8000
+    ports:
+      - "8080:8080"
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - CLIENT=no
+      - ACCEPT=8000
+      - CONNECT=nginx:80
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8000:80"
+
