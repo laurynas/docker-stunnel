@@ -33,19 +33,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Test Docker image
-        run: |
-          # Test that the image can start without errors
-          docker run --rm kurmisrainas/stunnel:ci-${{ matrix.platform }} --help || true
-
-          # Test with basic environment variables
-          docker run --rm \
-            -e ACCEPT=8080 \
-            -e CONNECT=example.com:443 \
-            kurmisrainas/stunnel:ci-${{ matrix.platform }} --help || true
-
-          echo "✅ Docker image built and basic tests passed for ${{ matrix.platform }}"
-
   version:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     needs: [test]
