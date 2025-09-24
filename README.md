@@ -1,5 +1,7 @@
 # docker-stunnel
 
+[![Docker Hub](https://img.shields.io/docker/image-size/kurmisrainas/stunnel?label=Docker%20Hub&logo=docker)](https://hub.docker.com/r/kurmisrainas/stunnel)
+
 A simple Docker image for stunnel that supports both client and server modes.
 
 ## Client Mode (Default)
