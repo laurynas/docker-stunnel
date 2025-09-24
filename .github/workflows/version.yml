@@ -8,6 +8,10 @@ on:
 jobs:
   version:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     outputs:
       new-tag: ${{ steps.version.outputs.new-tag }}
       previous-tag: ${{ steps.version.outputs.previous-tag }}
@@ -67,6 +71,8 @@ jobs:
     if: needs.version.outputs.new-tag != ''
     environment: production
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
