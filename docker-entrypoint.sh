@@ -1,9 +1,11 @@
 #!/bin/sh
 
+CLIENT_MODE="${CLIENT:-yes}"
+
 cd /etc/stunnel
 
 # Generate self-signed certificate if running in server mode
-if [ "${CLIENT:-yes}" = "no" ]; then
+if [ "${CLIENT_MODE}" = "no" ]; then
     if [ ! -f stunnel.crt ] || [ ! -f stunnel.key ]; then
         echo "Generating self-signed certificate for server mode..."
         openssl req -x509 -newkey rsa:4096 -keyout stunnel.key -out stunnel.crt -days 3650 -nodes -subj "/C=US/ST=State/L=City/O=Stunnel/CN=localhost" 2>/dev/null
@@ -20,7 +22,7 @@ cat > stunnel.conf <<_EOF_
 
 foreground = yes
 sslVersionMin = TLSv1.2
-client = ${CLIENT:-yes}
+client = ${CLIENT_MODE}
 
 [tunnel]
 accept = ${ACCEPT}
@@ -30,7 +32,7 @@ delay = yes
 _EOF_
 
 # Add certificate configuration for server mode
-if [ "${CLIENT:-yes}" = "no" ]; then
+if [ "$CLIENT_MODE" = "no" ]; then
     cat >> stunnel.conf <<_EOF_
 
 cert = /etc/stunnel/stunnel.crt
