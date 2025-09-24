@@ -15,9 +15,11 @@ if [ "${CLIENT:-yes}" = "no" ]; then
     fi
 fi
 
+# Generate stunnel.conf
 cat > stunnel.conf <<_EOF_
 
 foreground = yes
+sslVersionMin = TLSv1.2
 client = ${CLIENT:-yes}
 
 [tunnel]
