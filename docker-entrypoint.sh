@@ -5,9 +5,9 @@ cd /etc/stunnel
 cat > stunnel.conf <<_EOF_
 
 foreground = yes
-client  = yes
+client = ${CLIENT:-yes}
 
-[stunnel-client]
+[tunnel]
 accept = ${ACCEPT}
 connect = ${CONNECT}
 delay = yes

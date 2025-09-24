@@ -1,17 +1,21 @@
 services:
   client:
-    image: kurmisrainas/stunnel:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       - ACCEPT=8080
       - CONNECT=server:8000
     ports:
       - "8080:8080"
   server:
-    image: dweomer/stunnel@sha256:2d883cdcc3c65298a4ec24e07ba6415304d4b579c0826e5d9e0cadad6343ce43
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
-      STUNNEL_SERVICE: demo
-      STUNNEL_ACCEPT: 8000
-      STUNNEL_CONNECT: nginx:80
+      - CLIENT=no
+      - ACCEPT=8000
+      - CONNECT=nginx:80
   nginx:
     image: nginx:latest
     ports:
