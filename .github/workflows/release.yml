@@ -42,8 +42,3 @@ jobs:
             kurmisrainas/stunnel:${{ github.event.release.tag_name || inputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Verify release
-        run: |
-          echo "✅ Docker image successfully built and pushed with tag:"
-          echo "kurmisrainas/stunnel:${{ github.event.release.tag_name || inputs.tag }}"
