@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.22
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
