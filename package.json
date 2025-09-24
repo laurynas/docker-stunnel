@@ -1,0 +1,31 @@
+{
+  "name": "docker-stunnel",
+  "version": "1.0.0",
+  "description": "A simple Docker image for stunnel that supports both client and server modes",
+  "main": "docker-entrypoint.sh",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kurmisrainas/docker-stunnel.git"
+  },
+  "keywords": [
+    "docker",
+    "stunnel",
+    "ssl",
+    "tunnel",
+    "proxy"
+  ],
+  "author": "kurmisrainas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kurmisrainas/docker-stunnel/issues"
+  },
+  "homepage": "https://github.com/kurmisrainas/docker-stunnel#readme",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "semantic-release": "^19.0.2"
+  }
+}
