@@ -29,7 +29,6 @@ jobs:
           context: .
           platforms: ${{ matrix.platform }}
           push: false
-          tags: kurmisrainas/stunnel:ci-${{ matrix.platform }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
